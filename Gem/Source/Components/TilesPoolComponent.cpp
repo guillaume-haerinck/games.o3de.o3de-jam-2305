@@ -286,7 +286,7 @@ TilesPoolComponent::CellIndexesList TilesPoolComponent::CreateAllObstacles()
 		{
 			for(AZ::u16 k = 0; k < static_cast<AZ::u16>(invertedColumnScale); ++k)
 			{
-				obstacleCellIndexes.emplace(AZStd::make_pair(tileRow + j, tileColumn + k));
+				obstacleCellIndexes.emplace(AZStd::make_pair(static_cast<AZ::u16>(tileRow + j), static_cast<AZ::u16>(tileColumn + k)));
 			}
 		}
 

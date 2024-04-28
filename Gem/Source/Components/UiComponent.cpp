@@ -20,6 +20,8 @@
 
 #include <AzFramework/API/ApplicationAPI.h>
 #include <AzFramework/Components/CameraBus.h>
+#include <AzFramework/Input/Devices/Mouse/InputDeviceMouse.h>
+#include <AzFramework/Input/Buses/Requests/InputSystemCursorRequestBus.h>
 
 #include <LyShine/Bus/UiCanvasBus.h>
 #include <LyShine/Bus/UiElementBus.h>
@@ -252,6 +254,10 @@ void UiComponent::ShowMainMenu()
 	ShowUiElement(m_mainMenuEntityId);
 
 	HideUiElement(m_loadingScreenEntityId, FADE_SPEED);
+
+	AzFramework::InputSystemCursorRequestBus::Event(
+		AzFramework::InputDeviceMouse::Id, &AzFramework::InputSystemCursorRequests::SetSystemCursorState,
+		AzFramework::SystemCursorState::ConstrainedAndVisible);
 }
 
 void UiComponent::CreateGame()
